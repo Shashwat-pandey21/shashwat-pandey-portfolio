@@ -1,0 +1,29 @@
+{
+  "name": "fullstack-personal-portfolio",
+  "version": "1.0.0",
+  "description": "Production-Ready Full-Stack Personal Portfolio Website with Admin CMS",
+  "main": "server/server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server --prefix server\" \"npm run dev --prefix client\"",
+    "start": "npm run start --prefix server",
+    "client": "npm run dev --prefix client",
+    "server": "npm run server --prefix server",
+    "seed": "npm run seed --prefix server",
+    "build:client": "npm run build --prefix client",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "express",
+    "mongodb",
+    "fullstack",
+    "admin-dashboard",
+    "cms"
+  ],
+  "author": "Portfolio Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
