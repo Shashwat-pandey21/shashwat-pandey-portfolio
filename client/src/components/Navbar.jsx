@@ -55,10 +55,10 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-lg tracking-tight gradient-text">
-                DevPortfolio
+                Shashwat Pandey
               </span>
               <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                Full-Stack Engineer
+                Full-Stack Developer
               </span>
             </div>
           </Link>

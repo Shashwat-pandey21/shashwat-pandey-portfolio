@@ -33,7 +33,7 @@ const Footer = () => {
                 <Code2 className="w-4 h-4 text-white" />
               </div>
               <span className="font-bold text-lg text-white tracking-tight">
-                {profile?.name || 'DevPortfolio'}
+                {profile?.name || 'Shashwat Pandey'}
               </span>
             </Link>
             <p className="text-sm text-slate-400 max-w-md leading-relaxed">
