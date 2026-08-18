@@ -80,9 +80,9 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Right Action Buttons */}
-          <div className="hidden md:flex items-center gap-3">
-            {isAuthenticated ? (
+          {/* Right Action Buttons (Only shown when authenticated admin) */}
+          {isAuthenticated && (
+            <div className="hidden md:flex items-center gap-3">
               <div className="flex items-center gap-2">
                 <Link
                   to="/admin/dashboard"
@@ -99,16 +99,8 @@ const Navbar = () => {
                   <LogOut className="w-4 h-4" />
                 </button>
               </div>
-            ) : (
-              <Link
-                to="/admin/login"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-slate-700/50 transition-all"
-              >
-                <Shield className="w-3.5 h-3.5 text-indigo-400" />
-                Admin Portal
-              </Link>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
@@ -140,36 +132,25 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <div className="pt-4 border-t border-slate-800/80 flex flex-col gap-2">
-            {isAuthenticated ? (
-              <>
-                <Link
-                  to="/admin/dashboard"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-semibold bg-indigo-600 text-white"
-                >
-                  <LayoutDashboard className="w-4 h-4" />
-                  Admin Dashboard
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center justify-center gap-2 w-full py-2 rounded-lg text-sm font-medium text-rose-400 hover:bg-rose-500/10"
-                >
-                  <LogOut className="w-4 h-4" />
-                  Sign Out
-                </button>
-              </>
-            ) : (
+          {isAuthenticated && (
+            <div className="pt-4 border-t border-slate-800/80 flex flex-col gap-2">
               <Link
-                to="/admin/login"
+                to="/admin/dashboard"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-medium text-slate-300 bg-slate-800/70 border border-slate-700"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-semibold bg-indigo-600 text-white"
               >
-                <Shield className="w-4 h-4 text-indigo-400" />
-                Admin Portal Login
+                <LayoutDashboard className="w-4 h-4" />
+                Admin Dashboard
               </Link>
-            )}
-          </div>
+              <button
+                onClick={handleLogout}
+                className="flex items-center justify-center gap-2 w-full py-2 rounded-lg text-sm font-medium text-rose-400 hover:bg-rose-500/10"
+              >
+                <LogOut className="w-4 h-4" />
+                Sign Out
+              </button>
+            </div>
+          )}
         </div>
       )}
     </header>
