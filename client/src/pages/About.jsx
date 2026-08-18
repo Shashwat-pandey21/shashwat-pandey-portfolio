@@ -61,10 +61,10 @@ const About = () => {
           <span>Profile Overview</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          About <span className="gradient-text">{profile?.name || 'Ethan Vance'}</span>
+          About <span className="gradient-text">{profile?.name || 'Shashwat Pandey'}</span>
         </h1>
         <p className="text-lg text-slate-400 leading-relaxed">
-          {profile?.title || 'Lead Full-Stack Software Engineer'}
+          {profile?.title || 'MERN Stack Developer'}
         </p>
       </div>
 
@@ -74,12 +74,12 @@ const About = () => {
         <div className="lg:col-span-5 space-y-6">
           <div className="rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/60 p-2 shadow-xl">
             <img
-              src={profile?.profileImage || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'}
-              alt={profile?.name}
+              src={profile?.profileImage || '/profile.jpg'}
+              alt={profile?.name || 'Shashwat Pandey'}
               className="w-full aspect-[4/5] object-cover rounded-2xl"
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';
+                e.target.src = '/profile.jpg';
               }}
             />
           </div>

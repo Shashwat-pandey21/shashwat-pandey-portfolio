@@ -9,13 +9,13 @@ const getProfile = async (req, res, next) => {
     if (!profile) {
       // Return default placeholder if none exists yet
       profile = await Profile.create({
-        name: 'Alex Morgan',
-        title: 'Full Stack Engineer & Cloud Architect',
-        bio: 'Passionate full-stack developer dedicated to building high-performance web applications and scalable distributed systems with clean architectures.',
-        profileImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-        email: 'alex.morgan@example.com',
-        phone: '+1 (555) 234-5678',
-        location: 'San Francisco, CA',
+        name: 'Shashwat Pandey',
+        title: 'MERN Stack Developer',
+        bio: 'I’m an AI & Data Science student passionate about full-stack development and problem solving. I enjoy building practical web applications and working with technologies like React, Node.js, Express.js, and MongoDB. I’m constantly learning, building projects, and improving my skills to become a strong software engineer.',
+        profileImage: '/profile.jpg',
+        email: 'pandeyshashwat@gmail.com',
+        phone: '+91 98765 43210',
+        location: 'India',
         github: 'https://github.com',
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',

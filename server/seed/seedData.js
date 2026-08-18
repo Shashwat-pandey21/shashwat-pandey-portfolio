@@ -6,17 +6,17 @@ const adminUser = {
 };
 
 const profileData = {
-  name: 'Ethan Vance',
-  title: 'Lead Full-Stack Engineer & Distributed Systems Specialist',
-  bio: 'Driven full-stack engineer with 6+ years of experience architecting resilient cloud-native applications, scalable microservices, and sleek, high-conversion user interfaces. Passionate about TypeScript, React, Node.js, distributed database scaling, and developer tooling.',
-  profileImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-  email: 'ethan.vance.dev@gmail.com',
-  phone: '+1 (415) 890-3421',
-  location: 'San Francisco, CA & Remote',
-  github: 'https://github.com/developer-ethan',
-  linkedin: 'https://linkedin.com/in/ethan-vance-dev',
-  twitter: 'https://twitter.com/ethanvance_dev',
-  resumeUrl: 'https://example.com/ethan-vance-resume.pdf',
+  name: 'Shashwat Pandey',
+  title: 'MERN Stack Developer',
+  bio: 'I’m an AI & Data Science student passionate about full-stack development and problem solving. I enjoy building practical web applications and working with technologies like React, Node.js, Express.js, and MongoDB. I’m constantly learning, building projects, and improving my skills to become a strong software engineer.',
+  profileImage: '/profile.jpg',
+  email: 'pandeyshashwat@gmail.com',
+  phone: '+91 98765 43210',
+  location: 'India',
+  github: 'https://github.com',
+  linkedin: 'https://linkedin.com',
+  twitter: 'https://twitter.com',
+  resumeUrl: 'https://example.com/resume.pdf',
 };
 
 const skillsData = [

@@ -69,11 +69,11 @@ const Home = () => {
                 <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-none">
                   Hi, I'm{' '}
                   <span className="gradient-text">
-                    {profile?.name || 'Ethan Vance'}
+                    {profile?.name || 'Shashwat Pandey'}
                   </span>
                 </h1>
                 <h2 className="text-xl sm:text-2xl font-semibold text-slate-300">
-                  {profile?.title || 'Lead Full-Stack Software Engineer'}
+                  {profile?.title || 'MERN Stack Developer'}
                 </h2>
               </div>
 
@@ -160,12 +160,12 @@ const Home = () => {
                 {/* Avatar Card */}
                 <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-slate-700/80 bg-slate-900 shadow-2xl p-2">
                   <img
-                    src={profile?.profileImage || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'}
-                    alt={profile?.name || 'Developer Avatar'}
+                    src={profile?.profileImage || '/profile.jpg'}
+                    alt={profile?.name || 'Shashwat Pandey'}
                     className="w-full h-full object-cover rounded-2xl"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';
+                      e.target.src = '/profile.jpg';
                     }}
                   />
                 </div>
