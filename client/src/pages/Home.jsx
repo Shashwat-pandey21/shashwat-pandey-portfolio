@@ -29,7 +29,7 @@ import { CardSkeleton, SkillSkeleton } from '../components/LoadingSkeleton';
 
 const Home = () => {
   const [profile, setProfile] = useState(null);
-  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [skills, setSkills] = useState([]);
   const [educationList, setEducationList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,7 +45,7 @@ const Home = () => {
         ]);
 
         if (profileRes.success) setProfile(profileRes.data);
-        if (projectsRes.success) setFeaturedProjects(projectsRes.data);
+        if (projectsRes.success) setProjects(projectsRes.data);
         if (skillsRes.success) setSkills(skillsRes.data);
         if (educationRes.success) setEducationList(educationRes.data);
       } catch (err) {
@@ -280,23 +280,26 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. Featured Projects Section */}
+      {/* 3. Projects Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Project Showcase</span>
+              <Code2 className="w-3.5 h-3.5" />
+              <span>Project Portfolio</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Featured Engineering Projects
+              Projects
             </h2>
+            <p className="text-sm text-slate-400 mt-1">
+              Practical web applications and backend systems built with modern technologies.
+            </p>
           </div>
           <Link
             to="/projects"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
           >
-            <span>View All Projects</span>
+            <span>View All Details</span>
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -308,13 +311,13 @@ const Home = () => {
             <CardSkeleton />
             <CardSkeleton />
           </div>
-        ) : featuredProjects.length === 0 ? (
+        ) : projects.length === 0 ? (
           <div className="p-12 text-center rounded-2xl bg-slate-900/40 border border-slate-800 text-slate-400">
-            <p>No featured projects found at this time.</p>
+            <p>No projects found at this time.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {featuredProjects.map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project._id} project={project} />
             ))}
           </div>

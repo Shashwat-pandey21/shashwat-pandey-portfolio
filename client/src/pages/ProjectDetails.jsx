@@ -98,20 +98,8 @@ const ProjectDetails = () => {
       {/* Hero Header */}
       <div className="space-y-4">
         <div className="flex flex-wrap items-center gap-3">
-          {project.title?.toLowerCase().includes('voting app') && (
-            <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-600/90 border border-indigo-400/50 text-white text-xs font-bold shadow-md shadow-indigo-600/40">
-              <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
-              <span>Primary Featured Project</span>
-            </span>
-          )}
-          {project.featured && !project.title?.toLowerCase().includes('voting app') && (
-            <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold">
-              <Star className="w-3 h-3 fill-amber-300" />
-              <span>Featured Project</span>
-            </span>
-          )}
           {project.category && (
-            <span className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-mono text-indigo-300">
+            <span className="px-3 py-1 rounded-full bg-slate-850 border border-slate-700 text-xs font-mono text-cyan-300">
               {project.category}
             </span>
           )}

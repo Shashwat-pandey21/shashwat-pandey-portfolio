@@ -35,7 +35,7 @@ Administrators can log into a dedicated, responsive CMS Dashboard to manage thei
 
 ### 🌟 Public Portfolio
 - **Modern Hero Section**: Name, professional title, bio, real profile photo, action buttons, and direct LeetCode link.
-- **Dynamic Projects Showcase**: Primary featured project (*Online Voting Application*), *URL Shortener*, *BookSphere*, *Weather App*, and *CravMap* with search, tech stack filtering, modal previews, and detailed single-project pages (`/projects/:id`).
+- **Projects Showcase**: 4 projects (*BookSphere*, *Online Voting Application*, *URL Shortener*, *Weather App*) with search, tech stack filtering, modal previews, and detailed single-project pages (`/projects/:id`).
 - **Problem Solving & DSA Matrix**: LeetCode stats (450+ LeetCode solved, 1710 contest rating, 500+ across platforms), C++ primary problem solving language, and 13 core algorithmic topic tags.
 - **Dynamic Categorized Skills**: Skills grouped into *Programming Languages*, *Core CS*, *Backend*, *Frontend (Currently Learning)*, *Database*, and *Tools & Technologies* (featuring Postman).
 - **Academic Credentials (Education)**: Degree, college, and computer science curriculum without GPA.

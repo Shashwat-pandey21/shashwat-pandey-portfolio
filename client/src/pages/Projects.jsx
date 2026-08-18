@@ -70,13 +70,13 @@ const Projects = () => {
       <div className="space-y-4 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono uppercase tracking-wider">
           <FolderGit2 className="w-3.5 h-3.5" />
-          <span>MongoDB Dynamic Showcase</span>
+          <span>Project Portfolio</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Featured <span className="gradient-text">Projects & Systems</span>
+          Selected <span className="gradient-text">Projects</span>
         </h1>
         <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-          A showcase of full-stack web platforms, telemetry platforms, and distributed systems built with modern engineering best practices.
+          Practical web applications, backend systems, machine learning recommendations, and responsive utilities.
         </p>
       </div>
 
@@ -231,7 +231,7 @@ const Projects = () => {
                 href={`/projects/${previewProject._id}`}
                 className="text-xs font-semibold text-indigo-400 hover:text-indigo-300"
               >
-                View Complete Project Architecture →
+                View Complete Project Details →
               </a>
 
               <div className="flex items-center gap-2">
