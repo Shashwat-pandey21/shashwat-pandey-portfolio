@@ -4,8 +4,8 @@ import {
   GraduationCap,
   Calendar,
   Building,
-  Award,
   BookOpen,
+  MapPin,
 } from 'lucide-react';
 import { TableSkeleton } from '../components/LoadingSkeleton';
 
@@ -39,10 +39,10 @@ const Education = () => {
           <span>Academic Background</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Education & <span className="gradient-text">Credentials</span>
+          Education & <span className="gradient-text">Academic Degree</span>
         </h1>
         <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-          Formal university degrees, computer science specializations, honors, and coursework records.
+          Undergraduate degree, computer science core subjects, Artificial Intelligence & Data Science curriculum.
         </p>
       </div>
 
@@ -61,13 +61,17 @@ const Education = () => {
               className="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/60 space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-slate-800">
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    {edu.degree} in {edu.field}
+                    {edu.degree}
                   </h2>
                   <div className="flex items-center gap-2 text-cyan-400 font-semibold text-sm">
                     <Building className="w-4 h-4" />
                     <span>{edu.institution}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                    <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Greater Noida, Uttar Pradesh</span>
                   </div>
                 </div>
 
@@ -78,12 +82,6 @@ const Education = () => {
                       {edu.startYear} – {edu.endYear || 'Present'}
                     </span>
                   </div>
-                  {edu.grade && (
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-400 font-semibold">
-                      <Award className="w-3.5 h-3.5" />
-                      <span>{edu.grade}</span>
-                    </div>
-                  )}
                 </div>
               </div>
 
@@ -91,7 +89,7 @@ const Education = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
                     <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-                    <span>Specialization & Achievements:</span>
+                    <span>Specialization & Core Subjects:</span>
                   </div>
                   <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                     {edu.description}

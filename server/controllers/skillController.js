@@ -7,7 +7,7 @@ const getSkills = async (req, res, next) => {
   try {
     const { category } = req.query;
     const filter = category ? { category } : {};
-    const skills = await Skill.find(filter).sort({ proficiency: -1, createdAt: -1 });
+    const skills = await Skill.find(filter).sort({ createdAt: 1 });
 
     res.json({
       success: true,
@@ -24,12 +24,13 @@ const getSkills = async (req, res, next) => {
 // @access  Private/Admin
 const createSkill = async (req, res, next) => {
   try {
-    const { name, category, proficiency, icon } = req.body;
+    const { name, category, proficiency, icon, label } = req.body;
 
     const skill = await Skill.create({
       name,
       category,
-      proficiency: proficiency !== undefined ? Number(proficiency) : 80,
+      proficiency: proficiency !== undefined ? Number(proficiency) : 85,
+      label: label || '',
       icon: icon || 'Code',
     });
 

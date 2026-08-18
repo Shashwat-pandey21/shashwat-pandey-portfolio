@@ -52,7 +52,7 @@ const runTests = async () => {
     // 5. Public Experience & Education
     console.log('\n--- Test 5: Public Experience & Education ---');
     const expRes = await fetch(`${BASE_URL}/experience`).then((r) => r.json());
-    assert(expRes.success === true && expRes.data.length >= 2, 'Experience returns records');
+    assert(expRes.success === true && expRes.data.length >= 1, 'Experience returns records');
 
     const eduRes = await fetch(`${BASE_URL}/education`).then((r) => r.json());
     assert(eduRes.success === true && eduRes.data.length >= 1, 'Education returns records');

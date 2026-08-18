@@ -161,21 +161,20 @@ const EducationManager = () => {
                 <th className="px-6 py-4">Degree & Field</th>
                 <th className="px-6 py-4">Institution</th>
                 <th className="px-6 py-4">Period</th>
-                <th className="px-6 py-4">Grade / Honor</th>
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
               {loading ? (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-slate-400">
+                  <td colSpan="4" className="px-6 py-12 text-center text-slate-400">
                     <Loader2 className="w-6 h-6 animate-spin text-indigo-500 mx-auto mb-2" />
                     Loading education...
                   </td>
                 </tr>
               ) : education.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-slate-400">
+                  <td colSpan="4" className="px-6 py-12 text-center text-slate-400">
                     No education records found.
                   </td>
                 </tr>
@@ -193,9 +192,6 @@ const EducationManager = () => {
                       <span className="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-300 border border-slate-700">
                         {edu.startYear} — {edu.endYear || 'Present'}
                       </span>
-                    </td>
-                    <td className="px-6 py-4 font-mono text-xs text-emerald-400">
-                      {edu.grade || '—'}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
@@ -223,7 +219,7 @@ const EducationManager = () => {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Create / Edit Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -239,7 +235,7 @@ const EducationManager = () => {
               type="text"
               value={formData.institution}
               onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-              placeholder="e.g. University of California, Berkeley"
+              placeholder="e.g. Galgotias College of Engineering & Technology"
               required
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
             />
@@ -305,13 +301,13 @@ const EducationManager = () => {
 
             <div className="space-y-1.5">
               <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
-                Grade / Honors
+                Academic Status
               </label>
               <input
                 type="text"
                 value={formData.grade}
                 onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
-                placeholder="e.g. 3.9 GPA / Honors"
+                placeholder="e.g. Undergraduate Student"
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
               />
             </div>
@@ -319,13 +315,13 @@ const EducationManager = () => {
 
           <div className="space-y-1.5">
             <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
-              Description & Coursework
+              Description & Core Curriculum
             </label>
             <textarea
               rows="3"
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Specialized in Algorithms, Distributed Networks, HCI..."
+              placeholder="Specialized in AI & Data Science, Data Structures & Algorithms, DBMS, OOP..."
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 resize-none"
             />
           </div>

@@ -12,8 +12,9 @@ const Skills = () => {
   const categories = [
     'All',
     'Programming Languages',
-    'Frontend',
+    'Core CS',
     'Backend',
+    'Frontend',
     'Database',
     'Tools & Technologies',
   ];
@@ -52,13 +53,13 @@ const Skills = () => {
       <div className="space-y-4 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider">
           <Wrench className="w-3.5 h-3.5" />
-          <span>Dynamic MongoDB Capabilities</span>
+          <span>Technical Capabilities</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           Technical <span className="gradient-text">Skills & Stack</span>
         </h1>
         <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-          Comprehensive overview of programming languages, frameworks, distributed databases, and development tooling pulled dynamically from the database.
+          Technical skills across programming languages, core computer science concepts, full-stack frameworks, databases, and development tooling.
         </p>
       </div>
 

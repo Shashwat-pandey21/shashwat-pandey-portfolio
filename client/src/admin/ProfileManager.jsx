@@ -31,6 +31,7 @@ const ProfileManager = () => {
     location: '',
     github: '',
     linkedin: '',
+    leetcode: '',
     twitter: '',
     resumeUrl: '',
   });
@@ -51,6 +52,7 @@ const ProfileManager = () => {
             location: res.data.location || '',
             github: res.data.github || '',
             linkedin: res.data.linkedin || '',
+            leetcode: res.data.leetcode || '',
             twitter: res.data.twitter || '',
             resumeUrl: res.data.resumeUrl || '',
           });
@@ -273,6 +275,21 @@ const ProfileManager = () => {
                 value={formData.linkedin}
                 onChange={handleChange}
                 placeholder="https://linkedin.com/in/username"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="block text-xs font-medium text-slate-300 flex items-center gap-1.5">
+                <Code2 className="w-3.5 h-3.5 text-amber-400" />
+                <span>LeetCode URL</span>
+              </label>
+              <input
+                type="url"
+                name="leetcode"
+                value={formData.leetcode}
+                onChange={handleChange}
+                placeholder="https://leetcode.com/u/username"
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
               />
             </div>

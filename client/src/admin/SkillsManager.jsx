@@ -32,8 +32,9 @@ const SkillsManager = () => {
 
   const categories = [
     'Programming Languages',
-    'Frontend',
+    'Core CS',
     'Backend',
+    'Frontend',
     'Database',
     'Tools & Technologies',
   ];
@@ -41,6 +42,7 @@ const SkillsManager = () => {
   const [formData, setFormData] = useState({
     name: '',
     category: 'Programming Languages',
+    label: '',
     proficiency: 85,
     icon: 'Code2',
   });
@@ -68,6 +70,7 @@ const SkillsManager = () => {
     setFormData({
       name: '',
       category: 'Programming Languages',
+      label: '',
       proficiency: 85,
       icon: 'Code2',
     });
@@ -79,7 +82,8 @@ const SkillsManager = () => {
     setFormData({
       name: skill.name,
       category: skill.category,
-      proficiency: skill.proficiency,
+      label: skill.label || '',
+      proficiency: skill.proficiency || 85,
       icon: skill.icon || 'Code2',
     });
     setIsModalOpen(true);
@@ -326,13 +330,26 @@ const SkillsManager = () => {
 
           <div className="space-y-1.5">
             <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              Skill Label / Role Tag
+            </label>
+            <input
+              type="text"
+              value={formData.label}
+              onChange={(e) => setFormData({ ...formData, label: e.target.value })}
+              placeholder="e.g. Currently Learning, API Development & Testing Tool, Primary Language"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
               Lucide Icon Identifier
             </label>
             <input
               type="text"
               value={formData.icon}
               onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
-              placeholder="e.g. Code2, Terminal, Cpu, Database, Server, Cloud"
+              placeholder="e.g. Code, Terminal, Cpu, Database, Server, Send"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
             />
           </div>

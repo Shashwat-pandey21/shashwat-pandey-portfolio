@@ -3,38 +3,32 @@ import { Link } from 'react-router-dom';
 import {
   User,
   GraduationCap,
-  Briefcase,
   Compass,
   FileDown,
   Mail,
   MapPin,
-  Phone,
   CheckCircle2,
-  Calendar,
   Building,
+  Code2,
 } from 'lucide-react';
 import { profileService } from '../services/profileService';
 import { educationService } from '../services/educationService';
-import { experienceService } from '../services/experienceService';
 
 const About = () => {
   const [profile, setProfile] = useState(null);
   const [education, setEducation] = useState([]);
-  const [experience, setExperience] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [profRes, eduRes, expRes] = await Promise.all([
+        const [profRes, eduRes] = await Promise.all([
           profileService.getProfile(),
           educationService.getEducation(),
-          experienceService.getExperiences(),
         ]);
 
         if (profRes.success) setProfile(profRes.data);
         if (eduRes.success) setEducation(eduRes.data);
-        if (expRes.success) setExperience(expRes.data);
       } catch (err) {
         console.error('Error fetching about data:', err);
       } finally {
@@ -45,11 +39,12 @@ const About = () => {
   }, []);
 
   const careerInterests = [
-    'Cloud-Native Microservices & High-Concurrency Architectures',
-    'Real-time Data Streaming & Observability Platforms',
-    'Design Systems & Accessible Reactive Web Frameworks',
-    'Distributed Database Optimization & Sharding Strategies',
-    'Developer Productivity Tooling & Automated CI/CD Pipelines',
+    'Full-Stack Web Development',
+    'Backend Development',
+    'REST API Development',
+    'Data Structures & Algorithms',
+    'Database Management',
+    'Artificial Intelligence & Data Science',
   ];
 
   return (
@@ -64,7 +59,7 @@ const About = () => {
           About <span className="gradient-text">{profile?.name || 'Shashwat Pandey'}</span>
         </h1>
         <p className="text-lg text-slate-400 leading-relaxed">
-          {profile?.title || 'MERN Stack Developer'}
+          {profile?.title || 'Full-Stack Developer | AI & Data Science Student'}
         </p>
       </div>
 
@@ -89,38 +84,27 @@ const About = () => {
               Contact & Location
             </h3>
             <ul className="space-y-3 text-sm">
-              {profile?.location && (
-                <li className="flex items-center gap-3 text-slate-300">
-                  <MapPin className="w-4 h-4 text-indigo-400 shrink-0" />
-                  <span>{profile.location}</span>
-                </li>
-              )}
-              {profile?.email && (
-                <li className="flex items-center gap-3 text-slate-300">
-                  <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <a href={`mailto:${profile.email}`} className="hover:text-white transition-colors truncate">
-                    {profile.email}
-                  </a>
-                </li>
-              )}
-              {profile?.phone && (
-                <li className="flex items-center gap-3 text-slate-300">
-                  <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>{profile.phone}</span>
-                </li>
-              )}
+              <li className="flex items-center gap-3 text-slate-300">
+                <MapPin className="w-4 h-4 text-indigo-400 shrink-0" />
+                <span>Greater Noida, Uttar Pradesh, India</span>
+              </li>
+              <li className="flex items-center gap-3 text-slate-300">
+                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
+                <a href="mailto:pandeyshashwat510@gmail.com" className="hover:text-white transition-colors truncate">
+                  pandeyshashwat510@gmail.com
+                </a>
+              </li>
             </ul>
 
             {profile?.resumeUrl && (
               <div className="pt-2">
                 <a
                   href={profile.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  download
                   className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/20 transition-all"
                 >
                   <FileDown className="w-4 h-4" />
-                  <span>Download Curriculum Vitae</span>
+                  <span>Download Resume</span>
                 </a>
               </div>
             )}
@@ -132,15 +116,14 @@ const About = () => {
           {/* Bio statement */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-white tracking-tight">
-              Personal Summary & Philosophy
+              About Me
             </h2>
             <div className="space-y-4 text-slate-300 leading-relaxed">
               <p>
-                {profile?.bio ||
-                  'Experienced software developer focused on modern web engineering, distributed databases, and high-performance applications.'}
+                I’m a B.Tech student specializing in Artificial Intelligence and Data Science with a strong interest in full-stack web development and problem solving. I enjoy building practical web applications and developing backend systems using technologies such as Node.js, Express.js, MongoDB, and REST APIs. I’m also consistently improving my Data Structures and Algorithms skills through problem solving and LeetCode.
               </p>
               <p>
-                I thrive in fast-paced environments where reliability, testability, and developer experience are top priorities. I believe in clean code architectures, modular components, and writing clean, self-documenting code with comprehensive documentation.
+                I focus on writing clean, modular code, building reliable server-side APIs, and applying algorithmic problem-solving techniques to build scalable software applications.
               </p>
             </div>
           </div>
@@ -164,12 +147,12 @@ const About = () => {
             </div>
           </div>
 
-          {/* Education Summary */}
+          {/* Education Summary (NO CGPA) */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-xl font-bold text-white">
                 <GraduationCap className="w-5 h-5 text-cyan-400" />
-                <h2>Academic Credentials</h2>
+                <h2>Education</h2>
               </div>
               <Link
                 to="/education"
@@ -186,7 +169,7 @@ const About = () => {
                   className="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
                   <div className="space-y-1">
-                    <h3 className="font-bold text-slate-100">{edu.degree} in {edu.field}</h3>
+                    <h3 className="font-bold text-slate-100">{edu.degree}</h3>
                     <p className="text-sm text-slate-400 flex items-center gap-1.5">
                       <Building className="w-3.5 h-3.5 text-indigo-400" />
                       <span>{edu.institution}</span>
@@ -194,13 +177,8 @@ const About = () => {
                   </div>
                   <div className="text-right sm:shrink-0">
                     <span className="inline-block px-3 py-1 rounded-full bg-slate-800 text-xs font-mono text-slate-300 border border-slate-700">
-                      {edu.startYear} – {edu.endYear}
+                      {edu.startYear} – {edu.endYear || 'Present'}
                     </span>
-                    {edu.grade && (
-                      <p className="text-xs text-emerald-400 font-mono mt-1 font-semibold">
-                        {edu.grade}
-                      </p>
-                    )}
                   </div>
                 </div>
               ))}
@@ -208,19 +186,22 @@ const About = () => {
           </div>
 
           {/* Quick CTA */}
-          <div className="pt-4 flex items-center gap-4">
+          <div className="pt-4 flex flex-wrap items-center gap-4">
             <Link
               to="/contact"
               className="px-6 py-3 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/30 transition-all"
             >
               Get In Touch
             </Link>
-            <Link
-              to="/experience"
-              className="px-6 py-3 rounded-xl font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all"
+            <a
+              href="https://leetcode.com/u/shashwatpandey_21/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all"
             >
-              View Work History
-            </Link>
+              <Code2 className="w-4 h-4 text-amber-400" />
+              <span>LeetCode Profile</span>
+            </a>
           </div>
         </div>
       </div>

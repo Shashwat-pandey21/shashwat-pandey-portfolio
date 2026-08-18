@@ -18,37 +18,42 @@ const profileSchema = new mongoose.Schema(
     },
     profileImage: {
       type: String,
-      default: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+      default: '/profile.jpg',
     },
     email: {
       type: String,
       required: [true, 'Please provide a contact email'],
       trim: true,
       lowercase: true,
+      default: 'pandeyshashwat510@gmail.com',
     },
     phone: {
       type: String,
-      default: '+1 (555) 234-5678',
+      default: '',
     },
     location: {
       type: String,
-      default: 'San Francisco, CA',
+      default: 'Greater Noida, Uttar Pradesh, India',
     },
     github: {
       type: String,
-      default: 'https://github.com',
+      default: 'https://github.com/Shashwat-pandey21',
     },
     linkedin: {
       type: String,
-      default: 'https://linkedin.com',
+      default: 'https://www.linkedin.com/in/shashwat-pandey-b596a732a/',
+    },
+    leetcode: {
+      type: String,
+      default: 'https://leetcode.com/u/shashwatpandey_21/',
     },
     twitter: {
       type: String,
-      default: 'https://twitter.com',
+      default: '',
     },
     resumeUrl: {
       type: String,
-      default: 'https://example.com/resume.pdf',
+      default: '/resume.pdf',
     },
   },
   {

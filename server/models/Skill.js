@@ -12,6 +12,7 @@ const skillSchema = new mongoose.Schema(
       required: [true, 'Please provide a category'],
       enum: [
         'Programming Languages',
+        'Core CS',
         'Frontend',
         'Backend',
         'Database',
@@ -20,10 +21,13 @@ const skillSchema = new mongoose.Schema(
     },
     proficiency: {
       type: Number,
-      required: [true, 'Please provide proficiency percentage (1-100)'],
       min: [1, 'Proficiency cannot be less than 1'],
       max: [100, 'Proficiency cannot exceed 100'],
       default: 85,
+    },
+    label: {
+      type: String,
+      default: '',
     },
     icon: {
       type: String,

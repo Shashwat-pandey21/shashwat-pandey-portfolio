@@ -40,10 +40,10 @@ const Experience = () => {
           <span>Professional Background</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Work <span className="gradient-text">Experience & Roles</span>
+          Development <span className="gradient-text">Experience & Projects</span>
         </h1>
         <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-          Chronological record of full-stack engineering roles, systems architecture contributions, and software deliveries.
+          Record of full-stack application development, backend system implementations, and academic software engineering.
         </p>
       </div>
 

@@ -242,7 +242,7 @@ const ExperienceManager = () => {
                 type="text"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                placeholder="e.g. Acme Corp"
+                placeholder="e.g. Personal & Academic Projects"
                 required
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
               />
@@ -256,7 +256,7 @@ const ExperienceManager = () => {
                 type="text"
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                placeholder="e.g. Senior Full-Stack Engineer"
+                placeholder="e.g. Student Developer"
                 required
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
               />

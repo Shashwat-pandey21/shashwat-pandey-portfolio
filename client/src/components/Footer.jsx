@@ -38,51 +38,44 @@ const Footer = () => {
             </Link>
             <p className="text-sm text-slate-400 max-w-md leading-relaxed">
               {profile?.bio ||
-                'Full-Stack Software Engineer focused on crafting resilient distributed architectures, modern reactive interfaces, and scalable backend platforms.'}
+                'Full-Stack Developer & AI/DS Student building practical web applications, backend systems, and solving problems in C++ and JavaScript.'}
             </p>
             <div className="flex items-center gap-3 pt-2">
-              {profile?.github && (
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub Profile"
-                  className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-              )}
-              {profile?.linkedin && (
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn Profile"
-                  className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </a>
-              )}
-              {profile?.twitter && (
-                <a
-                  href={profile.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Twitter Profile"
-                  className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
-                >
-                  <Twitter className="w-4 h-4" />
-                </a>
-              )}
-              {profile?.email && (
-                <a
-                  href={`mailto:${profile.email}`}
-                  aria-label="Email Contact"
-                  className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
-                >
-                  <Mail className="w-4 h-4" />
-                </a>
-              )}
+              <a
+                href={profile?.github || 'https://github.com/Shashwat-pandey21'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href={profile?.linkedin || 'https://www.linkedin.com/in/shashwat-pandey-b596a732a/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href={profile?.leetcode || 'https://leetcode.com/u/shashwatpandey_21/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LeetCode Profile"
+                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-amber-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
+                title="LeetCode Profile"
+              >
+                <Code2 className="w-4 h-4" />
+              </a>
+              <a
+                href={`mailto:${profile?.email || 'pandeyshashwat510@gmail.com'}`}
+                aria-label="Email Contact"
+                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-slate-300 transition-all"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
 

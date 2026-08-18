@@ -34,11 +34,11 @@ Administrators can log into a dedicated, responsive CMS Dashboard to manage thei
 ## Key Features
 
 ### 🌟 Public Portfolio
-- **Modern Hero Section**: Name, job title, bio, avatar, quick links, and action buttons.
-- **Dynamic Projects Showcase**: Search by keyword, filter by tech stack or featured status, modal previews, and detailed single-project pages (`/projects/:id`).
-- **Dynamic Categorized Skills**: Dynamic skills grouped into *Programming Languages*, *Frontend*, *Backend*, *Database*, and *Tools & Technologies* with proficiency progress meters.
-- **Career Timeline (Experience)**: Chronological employment milestones with bulleted achievements and technology tags.
-- **Academic Credentials (Education)**: University degrees, honors, GPA, and coursework.
+- **Modern Hero Section**: Name, professional title, bio, real profile photo, action buttons, and direct LeetCode link.
+- **Dynamic Projects Showcase**: Primary featured project (*Online Voting Application*), *URL Shortener*, *BookSphere*, *Weather App*, and *CravMap* with search, tech stack filtering, modal previews, and detailed single-project pages (`/projects/:id`).
+- **Problem Solving & DSA Matrix**: LeetCode stats (450+ LeetCode solved, 1710 contest rating, 500+ across platforms), C++ primary problem solving language, and 13 core algorithmic topic tags.
+- **Dynamic Categorized Skills**: Skills grouped into *Programming Languages*, *Core CS*, *Backend*, *Frontend (Currently Learning)*, *Database*, and *Tools & Technologies* (featuring Postman).
+- **Academic Credentials (Education)**: Degree, college, and computer science curriculum without GPA.
 - **Interactive Contact Form**: Client & backend validated inquiry submission persisted directly to MongoDB with instant toast feedback.
 - **Rich Aesthetics**: Dark-mode glassmorphic interface, custom scrollbars, glowing accents, and responsive layout for mobile, tablet, and desktop.
 
@@ -249,7 +249,7 @@ The database consists of 7 Mongoose collections:
 - `Skill`: Name, category, proficiency metric, and icon.
 - `Project`: Title, description, technology array, screenshot, live demo, and GitHub link.
 - `Experience`: Company, role, timeline, and responsibilities.
-- `Education`: University, degree, field, GPA/honors, and coursework.
+- `Education`: Institution, degree, field, and core curriculum (NO CGPA).
 - `ContactMessage`: Public inquiry logs with read status flags.
 
 *See [`docs/database-schema.md`](docs/database-schema.md) for full field constraints and JSON models.*
@@ -281,5 +281,8 @@ The database consists of 7 Mongoose collections:
 
 ## Author & License
 
-- **Developer**: Portfolio Software Engineer
+- **Developer**: Shashwat Pandey (Full-Stack Developer | AI & Data Science Student)
+- **GitHub**: [github.com/Shashwat-pandey21](https://github.com/Shashwat-pandey21)
+- **LinkedIn**: [linkedin.com/in/shashwat-pandey](https://www.linkedin.com/in/shashwat-pandey-b596a732a/)
+- **LeetCode**: [leetcode.com/u/shashwatpandey_21](https://leetcode.com/u/shashwatpandey_21/)
 - **License**: MIT License — open for academic, personal, and professional use.

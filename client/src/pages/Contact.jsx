@@ -9,10 +9,12 @@ import {
   MessageSquare,
   Sparkles,
   MapPin,
-  Phone,
   CheckCircle2,
   AlertCircle,
   Loader2,
+  Github,
+  Linkedin,
+  Code2,
 } from 'lucide-react';
 
 const Contact = () => {
@@ -117,7 +119,7 @@ const Contact = () => {
           Get In <span className="gradient-text">Touch</span>
         </h1>
         <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-          Have an engineering opportunity, consulting inquiry, or technical challenge? Send a direct message below.
+          Have an internship opportunity, project collaboration, or technical inquiry? Send a direct message below.
         </p>
       </div>
 
@@ -129,52 +131,72 @@ const Contact = () => {
               Contact Information
             </h2>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Messages submitted through this form are stored securely in MongoDB and forwarded directly to the admin management portal.
+              Messages submitted through this form are stored securely in MongoDB and forwarded directly to my inbox.
             </p>
 
             <div className="space-y-4 pt-2">
-              {profile?.email && (
-                <div className="flex items-start gap-3 text-sm text-slate-300">
-                  <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono text-slate-400 block uppercase">Email</span>
-                    <a href={`mailto:${profile.email}`} className="font-medium hover:text-white transition-colors">
-                      {profile.email}
-                    </a>
-                  </div>
+              <div className="flex items-start gap-3 text-sm text-slate-300">
+                <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0">
+                  <Mail className="w-4 h-4" />
                 </div>
-              )}
+                <div>
+                  <span className="text-xs font-mono text-slate-400 block uppercase">Email</span>
+                  <a href="mailto:pandeyshashwat510@gmail.com" className="font-medium hover:text-white transition-colors">
+                    pandeyshashwat510@gmail.com
+                  </a>
+                </div>
+              </div>
 
-              {profile?.phone && (
-                <div className="flex items-start gap-3 text-sm text-slate-300">
-                  <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono text-slate-400 block uppercase">Phone</span>
-                    <span className="font-medium">{profile.phone}</span>
-                  </div>
+              <div className="flex items-start gap-3 text-sm text-slate-300">
+                <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
+                  <MapPin className="w-4 h-4" />
                 </div>
-              )}
-
-              {profile?.location && (
-                <div className="flex items-start gap-3 text-sm text-slate-300">
-                  <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono text-slate-400 block uppercase">Location</span>
-                    <span className="font-medium">{profile.location}</span>
-                  </div>
+                <div>
+                  <span className="text-xs font-mono text-slate-400 block uppercase">Location</span>
+                  <span className="font-medium">Greater Noida, Uttar Pradesh, India</span>
                 </div>
-              )}
+              </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 text-xs text-emerald-400 font-medium">
+            {/* Social Coordinates */}
+            <div className="pt-4 border-t border-slate-800 space-y-3">
+              <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block">
+                Profiles & Coding Platforms:
+              </span>
+              <div className="flex flex-col gap-2.5 text-sm">
+                <a
+                  href="https://github.com/Shashwat-pandey21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors"
+                >
+                  <Github className="w-4 h-4 text-slate-400" />
+                  <span>github.com/Shashwat-pandey21</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/shashwat-pandey-b596a732a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-slate-300 hover:text-indigo-400 transition-colors"
+                >
+                  <Linkedin className="w-4 h-4 text-indigo-400" />
+                  <span>linkedin.com/in/shashwat-pandey</span>
+                </a>
+                <a
+                  href="https://leetcode.com/u/shashwatpandey_21/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-slate-300 hover:text-amber-400 transition-colors"
+                >
+                  <Code2 className="w-4 h-4 text-amber-400" />
+                  <span>leetcode.com/u/shashwatpandey_21</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-800 flex items-center gap-2 text-xs text-emerald-400 font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>Typical response time: Within 24-48 business hours</span>
+              <span>Typical response time: Within 24 hours</span>
             </div>
           </div>
         </div>
@@ -189,7 +211,7 @@ const Contact = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-white">Message Transmitted!</h3>
                 <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                  Thank you for reaching out. Your message has been safely persisted to the database and will be reviewed shortly.
+                  Thank you for reaching out. Your message has been safely saved to MongoDB and will be reviewed promptly.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -213,7 +235,7 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Jane Doe"
+                        placeholder="John Doe"
                         className={`w-full px-4 py-3 rounded-xl bg-slate-800/80 border text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all ${
                           errors.name
                             ? 'border-rose-500/80 focus:border-rose-500'
@@ -241,7 +263,7 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="jane@example.com"
+                        placeholder="john@example.com"
                         className={`w-full px-4 py-3 rounded-xl bg-slate-800/80 border text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all ${
                           errors.email
                             ? 'border-rose-500/80 focus:border-rose-500'
@@ -269,7 +291,7 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="Project Inquiry / Job Opportunity"
+                    placeholder="Project Collaboration / Internship Opportunity"
                     className={`w-full px-4 py-3 rounded-xl bg-slate-800/80 border text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all ${
                       errors.subject
                         ? 'border-rose-500/80 focus:border-rose-500'
@@ -295,7 +317,7 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Hello Ethan, I would love to connect regarding..."
+                    placeholder="Hello Shashwat, I would love to connect regarding..."
                     className={`w-full px-4 py-3 rounded-xl bg-slate-800/80 border text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all resize-none ${
                       errors.message
                         ? 'border-rose-500/80 focus:border-rose-500'
