@@ -12,10 +12,19 @@ const ProjectCard = ({ project, onSelect }) => {
     githubUrl,
     liveUrl,
     featured,
+    category,
   } = project;
 
+  const isPrimary = title.toLowerCase().includes('voting app');
+
   return (
-    <div className="glass-card rounded-2xl overflow-hidden flex flex-col group h-full border border-slate-800/80 bg-slate-900/60 hover:border-indigo-500/50 transition-all duration-300">
+    <div
+      className={`glass-card rounded-2xl overflow-hidden flex flex-col group h-full border transition-all duration-300 ${
+        isPrimary
+          ? 'border-indigo-500/60 bg-gradient-to-b from-indigo-950/30 to-slate-900/80 shadow-lg shadow-indigo-500/10 ring-1 ring-indigo-500/30'
+          : 'border-slate-800/80 bg-slate-900/60 hover:border-indigo-500/50'
+      }`}
+    >
       {/* Project Image Preview */}
       <div className="relative aspect-video overflow-hidden bg-slate-950">
         <img
@@ -30,41 +39,51 @@ const ProjectCard = ({ project, onSelect }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-80" />
 
-        {/* Featured Badge */}
-        {featured && (
-          <div className="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold backdrop-blur-md">
-            <Star className="w-3 h-3 fill-amber-300" />
-            <span>Featured</span>
-          </div>
-        )}
-
-        {/* Quick Links Overlay */}
-        <div className="absolute top-3 right-3 flex items-center gap-2">
-          {githubUrl && (
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="View Source Code"
-              onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 rounded-full bg-slate-900/80 hover:bg-white hover:text-slate-950 text-white flex items-center justify-center backdrop-blur-md border border-slate-700 transition-all"
-            >
-              <Github className="w-4 h-4" />
-            </a>
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+          {isPrimary && (
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-600/90 border border-indigo-400/50 text-white text-[11px] font-bold backdrop-blur-md shadow-md shadow-indigo-600/40">
+              <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
+              <span>Primary Featured Project</span>
+            </div>
           )}
-          {liveUrl && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Live Deployment"
-              onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 rounded-full bg-indigo-600/90 hover:bg-indigo-500 text-white flex items-center justify-center backdrop-blur-md shadow-lg shadow-indigo-600/30 transition-all"
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
+          {featured && !isPrimary && (
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold backdrop-blur-md">
+              <Star className="w-3 h-3 fill-amber-300" />
+              <span>Featured</span>
+            </div>
           )}
         </div>
+
+        {/* Quick Links Overlay (Only rendered if non-empty valid URL is provided) */}
+        {(Boolean(githubUrl?.trim()) || Boolean(liveUrl?.trim())) && (
+          <div className="absolute top-3 right-3 flex items-center gap-2">
+            {Boolean(githubUrl?.trim()) && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View Source Code"
+                onClick={(e) => e.stopPropagation()}
+                className="w-8 h-8 rounded-full bg-slate-900/80 hover:bg-white hover:text-slate-950 text-white flex items-center justify-center backdrop-blur-md border border-slate-700 transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
+            {Boolean(liveUrl?.trim()) && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Live Deployment"
+                onClick={(e) => e.stopPropagation()}
+                className="w-8 h-8 rounded-full bg-indigo-600/90 hover:bg-indigo-500 text-white flex items-center justify-center backdrop-blur-md shadow-lg shadow-indigo-600/30 transition-all"
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Content */}

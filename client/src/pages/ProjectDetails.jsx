@@ -98,15 +98,23 @@ const ProjectDetails = () => {
       {/* Hero Header */}
       <div className="space-y-4">
         <div className="flex flex-wrap items-center gap-3">
-          {project.featured && (
+          {project.title?.toLowerCase().includes('voting app') && (
+            <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-600/90 border border-indigo-400/50 text-white text-xs font-bold shadow-md shadow-indigo-600/40">
+              <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
+              <span>Primary Featured Project</span>
+            </span>
+          )}
+          {project.featured && !project.title?.toLowerCase().includes('voting app') && (
             <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold">
               <Star className="w-3 h-3 fill-amber-300" />
               <span>Featured Project</span>
             </span>
           )}
-          <span className="text-xs font-mono text-slate-400">
-            Added on {new Date(project.createdAt).toLocaleDateString()}
-          </span>
+          {project.category && (
+            <span className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-mono text-indigo-300">
+              {project.category}
+            </span>
+          )}
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -127,73 +135,75 @@ const ProjectDetails = () => {
         />
       </div>
 
-      {/* Action Links Bar */}
-      <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-xs font-mono uppercase tracking-widest text-slate-400">
-            Deployment & Codebase
-          </p>
-          <p className="text-sm font-medium text-slate-200">
-            Verified repository and live production environment
-          </p>
+      {/* Action Links Bar (Only shown if at least one URL exists) */}
+      {(Boolean(project.githubUrl?.trim()) || Boolean(project.liveUrl?.trim())) && (
+        <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-xs font-mono uppercase tracking-widest text-slate-400">
+              Deployment & Codebase
+            </p>
+            <p className="text-sm font-medium text-slate-200">
+              Verified repository and live environment links
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            {Boolean(project.githubUrl?.trim()) && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition-colors"
+              >
+                <Github className="w-4 h-4" />
+                <span>View Source Code</span>
+              </a>
+            )}
+            {Boolean(project.liveUrl?.trim()) && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Launch Live Demo</span>
+              </a>
+            )}
+          </div>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              <span>View Source Code</span>
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all"
-            >
-              <ExternalLink className="w-4 h-4" />
-              <span>Launch Live Demo</span>
-            </a>
-          )}
-        </div>
-      </div>
+      )}
 
       {/* Project Description & Deep Dive */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-8">
           <div className="space-y-3">
             <h2 className="text-xl font-bold text-white tracking-tight">
-              Architecture & Overview
+              Project Overview
             </h2>
             <p className="text-base text-slate-300 leading-relaxed whitespace-pre-line">
               {project.description}
             </p>
           </div>
 
-          <div className="space-y-3">
-            <h2 className="text-xl font-bold text-white tracking-tight">
-              Key Engineering Highlights
-            </h2>
-            <ul className="space-y-2.5 text-sm text-slate-300">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Responsive, accessible layout optimized for mobile and high-density screens</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>End-to-end integration with RESTful backend APIs and persistent database models</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Optimized state management and centralized network caching layers</span>
-              </li>
-            </ul>
-          </div>
+          {/* Key Features list */}
+          {project.features && project.features.length > 0 && (
+            <div className="space-y-4">
+              <h2 className="text-xl font-bold text-white tracking-tight">
+                Important Features & Capabilities
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {project.features.map((feat, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/40 border border-slate-800/80 text-sm text-slate-300"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Right Sidebar: Tech Breakdown */}
@@ -201,7 +211,7 @@ const ProjectDetails = () => {
           <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
             <div className="flex items-center gap-2 text-slate-200 font-semibold">
               <Layers className="w-4 h-4 text-indigo-400" />
-              <h3>Technology Stack</h3>
+              <h3>Technologies</h3>
             </div>
             <div className="flex flex-wrap gap-2">
               {project.technologies?.map((tech, idx) => (

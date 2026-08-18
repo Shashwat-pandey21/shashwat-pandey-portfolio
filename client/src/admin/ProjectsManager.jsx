@@ -35,6 +35,8 @@ const ProjectsManager = () => {
     title: '',
     description: '',
     technologies: '',
+    category: 'Full-Stack Web Application',
+    features: '',
     image: '',
     githubUrl: '',
     liveUrl: '',
@@ -65,6 +67,8 @@ const ProjectsManager = () => {
       title: '',
       description: '',
       technologies: '',
+      category: 'Full-Stack Web Application',
+      features: '',
       image: '',
       githubUrl: '',
       liveUrl: '',
@@ -81,6 +85,10 @@ const ProjectsManager = () => {
       technologies: Array.isArray(project.technologies)
         ? project.technologies.join(', ')
         : project.technologies,
+      category: project.category || 'Full-Stack Web Application',
+      features: Array.isArray(project.features)
+        ? project.features.join('\n')
+        : project.features || '',
       image: project.image || '',
       githubUrl: project.githubUrl || '',
       liveUrl: project.liveUrl || '',
@@ -337,17 +345,45 @@ const ProjectsManager = () => {
             />
           </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                Technologies (comma separated) <span className="text-rose-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={formData.technologies}
+                onChange={(e) => setFormData({ ...formData, technologies: e.target.value })}
+                placeholder="React, Node.js, Express, MongoDB"
+                required
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                Category
+              </label>
+              <input
+                type="text"
+                value={formData.category}
+                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                placeholder="e.g. Full-Stack Web Application"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
           <div className="space-y-1.5">
             <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
-              Technologies (comma separated) <span className="text-rose-400">*</span>
+              Key Features & Capabilities (one per line)
             </label>
-            <input
-              type="text"
-              value={formData.technologies}
-              onChange={(e) => setFormData({ ...formData, technologies: e.target.value })}
-              placeholder="React, Node.js, Express, MongoDB, Tailwind CSS"
-              required
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+            <textarea
+              rows="3"
+              value={formData.features}
+              onChange={(e) => setFormData({ ...formData, features: e.target.value })}
+              placeholder="User registration and authentication&#10;Role-based authorization&#10;REST API endpoints..."
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 resize-none font-mono text-xs"
             />
           </div>
 

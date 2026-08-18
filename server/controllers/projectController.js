@@ -11,7 +11,8 @@ const getProjects = async (req, res, next) => {
       filter.featured = featured === 'true';
     }
 
-    const projects = await Project.find(filter).sort({ featured: -1, createdAt: -1 });
+    // Sort by createdAt ascending or custom sequence
+    const projects = await Project.find(filter).sort({ featured: -1, createdAt: 1 });
 
     res.json({
       success: true,
@@ -51,16 +52,22 @@ const getProjectById = async (req, res, next) => {
 // @access  Private/Admin
 const createProject = async (req, res, next) => {
   try {
-    let { title, description, technologies, image, githubUrl, liveUrl, featured } = req.body;
+    let { title, description, technologies, image, githubUrl, liveUrl, featured, category, features } = req.body;
 
     if (typeof technologies === 'string') {
       technologies = technologies.split(',').map((t) => t.trim()).filter(Boolean);
+    }
+
+    if (typeof features === 'string') {
+      features = features.split('\n').map((f) => f.trim()).filter(Boolean);
     }
 
     const project = await Project.create({
       title,
       description,
       technologies: Array.isArray(technologies) ? technologies : [technologies],
+      category: category || 'Full-Stack Web Application',
+      features: Array.isArray(features) ? features : [],
       image: image || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
       githubUrl: githubUrl || '',
       liveUrl: liveUrl || '',
@@ -88,6 +95,13 @@ const updateProject = async (req, res, next) => {
       updateData.technologies = updateData.technologies
         .split(',')
         .map((t) => t.trim())
+        .filter(Boolean);
+    }
+
+    if (typeof updateData.features === 'string') {
+      updateData.features = updateData.features
+        .split('\n')
+        .map((f) => f.trim())
         .filter(Boolean);
     }
 

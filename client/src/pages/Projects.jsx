@@ -194,6 +194,22 @@ const Projects = () => {
               </p>
             </div>
 
+            {previewProject.features && previewProject.features.length > 0 && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">
+                  Core Features
+                </h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                  {previewProject.features.slice(0, 4).map((feat, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="space-y-2">
               <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
                 Technologies Utilized
@@ -210,29 +226,38 @@ const Projects = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-800">
-              {previewProject.githubUrl && (
-                <a
-                  href={previewProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
-                >
-                  <Github className="w-4 h-4" />
-                  <span>GitHub Repository</span>
-                </a>
-              )}
-              {previewProject.liveUrl && (
-                <a
-                  href={previewProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Launch Live Application</span>
-                </a>
-              )}
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-800">
+              <a
+                href={`/projects/${previewProject._id}`}
+                className="text-xs font-semibold text-indigo-400 hover:text-indigo-300"
+              >
+                View Complete Project Architecture →
+              </a>
+
+              <div className="flex items-center gap-2">
+                {Boolean(previewProject.githubUrl?.trim()) && (
+                  <a
+                    href={previewProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>GitHub Repository</span>
+                  </a>
+                )}
+                {Boolean(previewProject.liveUrl?.trim()) && (
+                  <a
+                    href={previewProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Launch Live Demo</span>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </Modal>

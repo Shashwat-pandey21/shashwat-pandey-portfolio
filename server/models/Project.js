@@ -37,6 +37,14 @@ const projectSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    category: {
+      type: String,
+      default: 'Full-Stack Web Application',
+    },
+    features: {
+      type: [String],
+      default: [],
+    },
   },
   {
     timestamps: true,
