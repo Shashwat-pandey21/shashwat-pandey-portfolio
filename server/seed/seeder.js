@@ -1,9 +1,20 @@
+const dns = require('dns');
+// Set public DNS servers to resolve MongoDB Atlas SRV/TXT records reliably across all network environments
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
+} catch (e) {
+  // Ignore if unable to set custom DNS
+}
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load env vars
+// Load env vars from server/.env or root .env
 dotenv.config({ path: path.join(__dirname, '../.env') });
+if (!process.env.MONGODB_URI) {
+  dotenv.config({ path: path.join(__dirname, '../../.env') });
+}
 
 const User = require('../models/User');
 const Profile = require('../models/Profile');
@@ -25,10 +36,17 @@ const {
 
 const seedDB = async () => {
   try {
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
-    console.log(`Connecting to MongoDB at ${mongoUri}...`);
+    const mongoUri = process.env.MONGODB_URI;
+
+    if (!mongoUri) {
+      console.error('Error: MONGODB_URI is not defined in environment variables.');
+      console.error('Please configure MONGODB_URI in server/.env before seeding.');
+      process.exit(1);
+    }
+
+    console.log('Connecting to MongoDB database for seeding...');
     await mongoose.connect(mongoUri);
-    console.log('MongoDB Connected for Seeding.');
+    console.log(`MongoDB Connected successfully to host: ${mongoose.connection.host}`);
 
     console.log('Clearing existing collections...');
     await User.deleteMany();
@@ -62,13 +80,20 @@ const seedDB = async () => {
 
     console.log('====================================');
     console.log('DATABASE SEEDED SUCCESSFULLY!');
-    console.log(`Admin Email:    ${adminUser.email}`);
-    console.log(`Admin Password: ${adminUser.password}`);
+    console.log(`Database Host:  ${mongoose.connection.host}`);
+    console.log(`Database Name:  ${mongoose.connection.name}`);
+    console.log(`Admin User:     ${adminUser.email}`);
+    console.log(`Skills:         ${skillsData.length}`);
+    console.log(`Projects:       ${projectsData.length}`);
+    console.log(`Experiences:    ${experienceData.length}`);
+    console.log(`Education:      ${educationData.length}`);
+    console.log(`Messages:       ${contactMessagesData.length}`);
     console.log('====================================');
 
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
-    console.error('Error with database seeding:', error);
+    console.error('Error with database seeding:', error.message);
     process.exit(1);
   }
 };
