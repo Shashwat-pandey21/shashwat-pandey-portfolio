@@ -25,27 +25,14 @@ const contactRoutes = require('./routes/contactRoutes');
 // Import Middlewares
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
+// 1. Express app creation
 const app = express();
 
-// Ensure DB connection for serverless cold-starts & invocations
-app.use(async (req, res, next) => {
-  try {
-    await connectDB();
-    next();
-  } catch (err) {
-    console.error('[DB Connection Middleware Error]:', err.message);
-    return res.status(500).json({
-      success: false,
-      message: 'Database connection failed',
-    });
-  }
-});
-
-// Body parsers
+// 2. Body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS configuration
+// 3. CORS configuration
 const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
@@ -76,7 +63,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Health Check API
+// 4. Health Check API (accessible even when MongoDB is unavailable)
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
@@ -85,7 +72,21 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Mount Routes
+// 5. MongoDB connection middleware for database routes
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('[DB Connection Middleware Error]:', err.message);
+    return res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+    });
+  }
+});
+
+// 6. Mount API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/skills', skillRoutes);
@@ -94,7 +95,7 @@ app.use('/api/experience', experienceRoutes);
 app.use('/api/education', educationRoutes);
 app.use('/api/contact', contactRoutes);
 
-// Error Handling Middlewares
+// 7. Error Handling Middlewares
 app.use(notFound);
 app.use(errorHandler);
 
