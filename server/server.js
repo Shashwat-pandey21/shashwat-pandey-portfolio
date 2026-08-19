@@ -94,8 +94,8 @@ app.use('/api/contact', contactRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-// Start server locally when not running in Vercel serverless environment
-if (!process.env.VERCEL) {
+// Start server locally when executed directly (not when imported as a serverless function)
+if (require.main === module) {
   const PORT = process.env.PORT || 5000;
 
   const server = app.listen(PORT, () => {
