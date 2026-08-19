@@ -7,10 +7,6 @@ const connectDB = async () => {
     return mongoose.connection;
   }
 
-  if (isConnected) {
-    return;
-  }
-
   try {
     const conn = await mongoose.connect(
       process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db',
@@ -23,6 +19,7 @@ const connectDB = async () => {
     console.log(`[Database] MongoDB Connected: ${conn.connection.host}`);
     return conn;
   } catch (error) {
+    isConnected = false;
     console.error(`[Database Error] ${error.message}`);
     if (!process.env.VERCEL && process.env.NODE_ENV !== 'production') {
       process.exit(1);

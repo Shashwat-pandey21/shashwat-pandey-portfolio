@@ -31,10 +31,14 @@ const app = express();
 app.use(async (req, res, next) => {
   try {
     await connectDB();
+    next();
   } catch (err) {
     console.error('[DB Connection Middleware Error]:', err.message);
+    return res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+    });
   }
-  next();
 });
 
 // Body parsers
